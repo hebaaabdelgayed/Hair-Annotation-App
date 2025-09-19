@@ -729,14 +729,18 @@
             updateZoom(e) {
                 this.zoom = parseFloat(e.target.value);
                 document.getElementById('zoomValue').textContent = this.zoom + 'x';
-                this.canvas.style.transform = `scale(${this.zoom})`;
-                this.canvas.style.transformOrigin = 'top left';
+                if (this.canvas) {
+                    this.canvas.style.transform = `scale(${this.zoom})`;
+                    this.canvas.style.transformOrigin = 'top left';
+                }
             }
             
             updateSize(e) {
                 this.circleSize = parseInt(e.target.value);
                 document.getElementById('sizeValue').textContent = this.circleSize + 'px';
-                this.drawImage();
+                if (this.canvas) {
+                    this.drawImage();
+                }
             }
             
             updateHairCount(e) {
